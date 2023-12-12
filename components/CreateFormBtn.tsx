@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import {
   Dialog,
   DialogContent,
@@ -29,6 +30,7 @@ import { formSchema, formSchemaType } from '@/schemas/form';
 import { CreateForm } from '@/actions/form';
 
 const CreateFormBtn = () => {
+  const router = useRouter();
   const form = useForm<formSchemaType>({
     resolver: zodResolver(formSchema),
   });
@@ -40,7 +42,8 @@ const CreateFormBtn = () => {
         title: 'Success',
         description: 'Form created successfully',
       });
-      console.log('FORM ID: ', formId);
+      //   console.log('FORM ID: ', formId);
+      router.push(`/builder/${formId}`);
     } catch (error) {
       toast({
         title: 'Error',

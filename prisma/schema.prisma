@@ -14,7 +14,7 @@ datasource db {
 model Form {
   id          Int      @id @default(autoincrement())
   userId      String
-  created     DateTime @default(now())
+  createdAt   DateTime @default(now())
   published   Boolean  @default(false)
   name        String
   description String   @default("")
@@ -30,10 +30,10 @@ model Form {
 }
 
 model FormSubmission {
-  id      Int      @id @default(autoincrement())
-  created DateTime @default(now())
-  formId  Int
-  form    Form     @relation(fields: [formId], references: [id])
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  formId    Int
+  form      Form     @relation(fields: [formId], references: [id])
 
   content String
 }
